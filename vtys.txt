@@ -1,0 +1,32 @@
+1-) ürün( *ürün_id ,ürün_ad, ürün_fiyat, barkod_no(üretilmiş)  ) -> ürün_stok( *stok_miktarı  ,ürün_id)
+
+2-) müşteri(*müşteri_id ,user_name, user_surname,user_password,)
+
+3-) satış -> perakende_satış -> cari_satış(satış_tarihi, satış_miktarı)->ürün_id
+                             -> peşin_satış(satış_tarihi, satış_miktarı)->ürün_id
+           
+           
+          ->veresiye_satış(satış_tarihi, satış_miktarı)->müşteri_id
+                                         
+
+4-)  müşteri_borç(borç_miktar )->müşteri_id
+                               ->veresiye_satış
+
+5-) müşteri_ödemeler(ödeme_miktar, ödeme_tarihi)->müşteri_id
+                                        ->müşteri_borç
+
+6-) tedarikçi( *tedarikçi_id, tedarikçi_ad,)->ürün_id
+                                                                                  
+7-) tedarikçi_ödeme(ödeme_miktar, ödeme_tarihi)->tedarikçi
+
+8-)market()
+
+9-)tedarikçi_borç(borç_miktarı)->tedarikçi
+
+10-) irsaliye( *irsaliye_no ,ürün_girdi_fiyatı,ürün_girdi_miktarı) -> tedarikçi
+                                                                   -> ürün_stok
+                                                                   ->ürün_id   
+                                                                   ->barkod_no
+11-)
+
+
