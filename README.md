@@ -1,4 +1,4 @@
 # omuGross
 
-VTYS dönem projesi\n
-yunus emre test pull request
+VTYS dönem projesi
+
