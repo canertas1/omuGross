@@ -1,4 +1,4 @@
 # omuGross
 
 VTYS dönem projesi
-pinar yildirim fork etti
+pinar yildirim test
