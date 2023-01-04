@@ -1,4 +1,4 @@
 # omuGross
 
 VTYS dönem projesi
-pinar yildirim test
+pinar yildirim demo mode        
