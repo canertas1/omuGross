@@ -1,3 +1,2 @@
-# omuGross
-
-VTYS dönem projesi
+test fixed merge conflict ✔
+ 
