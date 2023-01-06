@@ -1,6 +1,6 @@
 # omuGross
 
-VTYS dönem projesi\n
+VTYS dönem projesi
 yunus emre test pull request
 
 test mode v27
