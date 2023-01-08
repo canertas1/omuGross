@@ -1,3 +1,1 @@
-# omuGross
 
-VTYS dönem projesi
