@@ -1,0 +1,16 @@
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\OmuGrossMarket.exe.config
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\OmuGrossMarket.exe
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\OmuGrossMarket.pdb
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\EntityFramework.dll
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\EntityFramework.xml
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.csproj.AssemblyReference.cache
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.csproj.SuggestedBindingRedirects.cache
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.Form1.resources
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.Properties.Resources.resources
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.csproj.GenerateResource.cache
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.csproj.CoreCompileInputs.cache
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.csproj.CopyComplete
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.exe
+C:\Users\90534\source\repos\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.pdb
