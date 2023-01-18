@@ -1,0 +1,1009 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="omuGrossDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="irsaliye">
+          <Key>
+            <PropertyRef Name="irsaliyeNo" />
+          </Key>
+          <Property Name="irsaliyeNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunGirdiMiktari" Type="int" Nullable="false" />
+          <Property Name="urunFiyati" Type="int" Nullable="false" />
+          <Property Name="tedarikciID" Type="int" Nullable="false" />
+          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="barkodNo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="market">
+          <Key>
+            <PropertyRef Name="marketID" />
+          </Key>
+          <Property Name="musteriID" Type="int" Nullable="false" />
+          <Property Name="tedarikciID" Type="int" Nullable="false" />
+          <Property Name="satisID" Type="int" Nullable="false" />
+          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="marketID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="musteri">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omuGrossDataBase.dbo.musteriBorc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="musteriBorc">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="int" Nullable="false" />
+          <Property Name="borcMiktari" Type="int" />
+        </EntityType>
+        <EntityType Name="musteriOdeme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="odemeMiktari" Type="int" Nullable="false" />
+          <Property Name="odemeTarihi" Type="date" Nullable="false" />
+          <Property Name="musteriID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="perakendeSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+          </Key>
+          <Property Name="satisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="satisTarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="satisMiktar" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omuGrossDataBase.dbo.pesinSatis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="pesinSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+            <PropertyRef Name="satisTarih" />
+            <PropertyRef Name="satisMiktar" />
+          </Key>
+          <Property Name="satisID" Type="int" Nullable="false" />
+          <Property Name="satisTarih" Type="smalldatetime" Nullable="false" />
+          <Property Name="satisMiktar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tedarikci">
+          <Key>
+            <PropertyRef Name="tedarikciID" />
+          </Key>
+          <Property Name="tedarikciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omuGrossDataBase.dbo.tedarikciBorc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tedarikciBorc">
+          <Key>
+            <PropertyRef Name="tedarikciID" />
+            <PropertyRef Name="borcMiktar" />
+          </Key>
+          <Property Name="tedarikciID" Type="int" Nullable="false" />
+          <Property Name="borcMiktar" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omuGrossDataBase.dbo.tedarikciOdeme' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tedarikciOdeme">
+          <Key>
+            <PropertyRef Name="tedarikciID" />
+            <PropertyRef Name="odemeMiktar" />
+            <PropertyRef Name="odemeTarih" />
+          </Key>
+          <Property Name="tedarikciID" Type="int" Nullable="false" />
+          <Property Name="odemeMiktar" Type="int" Nullable="false" />
+          <Property Name="odemeTarih" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunAd" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="urunFiyat" Type="int" Nullable="false" />
+          <Property Name="barkodNo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urunStokDurum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="stokMiktar" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'omuGrossDataBase.dbo.veresiye' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="veresiye">
+          <Key>
+            <PropertyRef Name="satisID" />
+            <PropertyRef Name="satisTarih" />
+            <PropertyRef Name="satisMiktar" />
+          </Key>
+          <Property Name="satisID" Type="int" Nullable="false" />
+          <Property Name="satisTarih" Type="int" Nullable="false" />
+          <Property Name="satisMiktar" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_irsaliye_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="irsaliye" Type="Self.irsaliye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="irsaliye">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_irsaliye_urun">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="irsaliye" Type="Self.irsaliye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="irsaliye">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_perakendeSatis">
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perakendeSatis">
+              <PropertyRef Name="satisID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="satisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_urun">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_musteriBorc_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="musteriBorc" Type="Self.musteriBorc" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="musteriBorc">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_musteriOdeme_musteri1">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="musteriOdeme" Type="Self.musteriOdeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="musteriOdeme">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_perakendeSatis_urun">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="perakendeSatis">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesinSatis_perakendeSatis">
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="1" />
+          <End Role="pesinSatis" Type="Self.pesinSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perakendeSatis">
+              <PropertyRef Name="satisID" />
+            </Principal>
+            <Dependent Role="pesinSatis">
+              <PropertyRef Name="satisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tedarikciBorc_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="tedarikciBorc" Type="Self.tedarikciBorc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="tedarikciBorc">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tedarikciOdeme_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="tedarikciOdeme" Type="Self.tedarikciOdeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="tedarikciOdeme">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunStokDurum_urun1">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="urunStokDurum" Type="Self.urunStokDurum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="urunStokDurum">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veresiteSatis_perakendeSatis">
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="1" />
+          <End Role="veresiye" Type="Self.veresiye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perakendeSatis">
+              <PropertyRef Name="satisID" />
+            </Principal>
+            <Dependent Role="veresiye">
+              <PropertyRef Name="satisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veresiye_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="veresiye" Type="Self.veresiye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="veresiye">
+              <PropertyRef Name="satisTarih" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="omuGrossDataBaseModelStoreContainer">
+          <EntitySet Name="irsaliye" EntityType="Self.irsaliye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="market" EntityType="Self.market" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="musteri" EntityType="Self.musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="musteriOdeme" EntityType="Self.musteriOdeme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="perakendeSatis" EntityType="Self.perakendeSatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tedarikci" EntityType="Self.tedarikci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunStokDurum" EntityType="Self.urunStokDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="musteriBorc" EntityType="Self.musteriBorc" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [musteriBorc].[musteriID] AS [musteriID], 
+    [musteriBorc].[borcMiktari] AS [borcMiktari]
+    FROM [dbo].[musteriBorc] AS [musteriBorc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="pesinSatis" EntityType="Self.pesinSatis" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [pesinSatis].[satisID] AS [satisID], 
+    [pesinSatis].[satisTarih] AS [satisTarih], 
+    [pesinSatis].[satisMiktar] AS [satisMiktar]
+    FROM [dbo].[pesinSatis] AS [pesinSatis]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tedarikciBorc" EntityType="Self.tedarikciBorc" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tedarikciBorc].[tedarikciID] AS [tedarikciID], 
+    [tedarikciBorc].[borcMiktar] AS [borcMiktar]
+    FROM [dbo].[tedarikciBorc] AS [tedarikciBorc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tedarikciOdeme" EntityType="Self.tedarikciOdeme" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tedarikciOdeme].[tedarikciID] AS [tedarikciID], 
+    [tedarikciOdeme].[odemeMiktar] AS [odemeMiktar], 
+    [tedarikciOdeme].[odemeTarih] AS [odemeTarih]
+    FROM [dbo].[tedarikciOdeme] AS [tedarikciOdeme]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="veresiye" EntityType="Self.veresiye" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [veresiye].[satisID] AS [satisID], 
+    [veresiye].[satisTarih] AS [satisTarih], 
+    [veresiye].[satisMiktar] AS [satisMiktar]
+    FROM [dbo].[veresiye] AS [veresiye]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_irsaliye_tedarikci" Association="Self.FK_irsaliye_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="irsaliye" EntitySet="irsaliye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_irsaliye_urun" Association="Self.FK_irsaliye_urun">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="irsaliye" EntitySet="irsaliye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_musteri" Association="Self.FK_market_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_perakendeSatis" Association="Self.FK_market_perakendeSatis">
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_tedarikci" Association="Self.FK_market_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_urun" Association="Self.FK_market_urun">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_musteriBorc_musteri" Association="Self.FK_musteriBorc_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="musteriBorc" EntitySet="musteriBorc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_musteriOdeme_musteri1" Association="Self.FK_musteriOdeme_musteri1">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="musteriOdeme" EntitySet="musteriOdeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_perakendeSatis_urun" Association="Self.FK_perakendeSatis_urun">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesinSatis_perakendeSatis" Association="Self.FK_pesinSatis_perakendeSatis">
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+            <End Role="pesinSatis" EntitySet="pesinSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tedarikciBorc_tedarikci" Association="Self.FK_tedarikciBorc_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="tedarikciBorc" EntitySet="tedarikciBorc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tedarikciOdeme_tedarikci" Association="Self.FK_tedarikciOdeme_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="tedarikciOdeme" EntitySet="tedarikciOdeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunStokDurum_urun1" Association="Self.FK_urunStokDurum_urun1">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="urunStokDurum" EntitySet="urunStokDurum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veresiteSatis_perakendeSatis" Association="Self.FK_veresiteSatis_perakendeSatis">
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+            <End Role="veresiye" EntitySet="veresiye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veresiye_musteri" Association="Self.FK_veresiye_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="veresiye" EntitySet="veresiye" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="omuGrossDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="irsaliye">
+          <Key>
+            <PropertyRef Name="irsaliyeNo" />
+          </Key>
+          <Property Name="irsaliyeNo" Type="Int32" Nullable="false" />
+          <Property Name="urunGirdiMiktari" Type="Int32" Nullable="false" />
+          <Property Name="urunFiyati" Type="Int32" Nullable="false" />
+          <Property Name="tedarikciID" Type="Int32" Nullable="false" />
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="barkodNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tedarikci" Relationship="Self.FK_irsaliye_tedarikci" FromRole="irsaliye" ToRole="tedarikci" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_irsaliye_urun" FromRole="irsaliye" ToRole="urun" />
+        </EntityType>
+        <EntityType Name="market">
+          <Key>
+            <PropertyRef Name="marketID" />
+          </Key>
+          <Property Name="musteriID" Type="Int32" Nullable="false" />
+          <Property Name="tedarikciID" Type="Int32" Nullable="false" />
+          <Property Name="satisID" Type="Int32" Nullable="false" />
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="marketID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="musteri" Relationship="Self.FK_market_musteri" FromRole="market" ToRole="musteri" />
+          <NavigationProperty Name="perakendeSatis" Relationship="Self.FK_market_perakendeSatis" FromRole="market" ToRole="perakendeSatis" />
+          <NavigationProperty Name="tedarikci" Relationship="Self.FK_market_tedarikci" FromRole="market" ToRole="tedarikci" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_market_urun" FromRole="market" ToRole="urun" />
+        </EntityType>
+        <EntityType Name="musteri">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="market" Relationship="Self.FK_market_musteri" FromRole="musteri" ToRole="market" />
+          <NavigationProperty Name="musteriBorc" Relationship="Self.FK_musteriBorc_musteri" FromRole="musteri" ToRole="musteriBorc" />
+          <NavigationProperty Name="musteriOdeme" Relationship="Self.FK_musteriOdeme_musteri1" FromRole="musteri" ToRole="musteriOdeme" />
+          <NavigationProperty Name="veresiye" Relationship="Self.FK_veresiye_musteri" FromRole="musteri" ToRole="veresiye" />
+        </EntityType>
+        <EntityType Name="musteriOdeme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="odemeMiktari" Type="Int32" Nullable="false" />
+          <Property Name="odemeTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="musteriID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="musteri" Relationship="Self.FK_musteriOdeme_musteri1" FromRole="musteriOdeme" ToRole="musteri" />
+        </EntityType>
+        <EntityType Name="perakendeSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+          </Key>
+          <Property Name="satisID" Type="Int32" Nullable="false" />
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="satisTarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="satisMiktar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="market" Relationship="Self.FK_market_perakendeSatis" FromRole="perakendeSatis" ToRole="market" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_perakendeSatis_urun" FromRole="perakendeSatis" ToRole="urun" />
+          <NavigationProperty Name="pesinSatis" Relationship="Self.FK_pesinSatis_perakendeSatis" FromRole="perakendeSatis" ToRole="pesinSatis" />
+          <NavigationProperty Name="veresiye" Relationship="Self.FK_veresiteSatis_perakendeSatis" FromRole="perakendeSatis" ToRole="veresiye" />
+        </EntityType>
+        <EntityType Name="tedarikci">
+          <Key>
+            <PropertyRef Name="tedarikciID" />
+          </Key>
+          <Property Name="tedarikciID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="irsaliye" Relationship="Self.FK_irsaliye_tedarikci" FromRole="tedarikci" ToRole="irsaliye" />
+          <NavigationProperty Name="market" Relationship="Self.FK_market_tedarikci" FromRole="tedarikci" ToRole="market" />
+          <NavigationProperty Name="tedarikciBorc" Relationship="Self.FK_tedarikciBorc_tedarikci" FromRole="tedarikci" ToRole="tedarikciBorc" />
+          <NavigationProperty Name="tedarikciOdeme" Relationship="Self.FK_tedarikciOdeme_tedarikci" FromRole="tedarikci" ToRole="tedarikciOdeme" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="urunAd" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urunFiyat" Type="Int32" Nullable="false" />
+          <Property Name="barkodNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="irsaliye" Relationship="Self.FK_irsaliye_urun" FromRole="urun" ToRole="irsaliye" />
+          <NavigationProperty Name="market" Relationship="Self.FK_market_urun" FromRole="urun" ToRole="market" />
+          <NavigationProperty Name="perakendeSatis" Relationship="Self.FK_perakendeSatis_urun" FromRole="urun" ToRole="perakendeSatis" />
+          <NavigationProperty Name="urunStokDurum" Relationship="Self.FK_urunStokDurum_urun1" FromRole="urun" ToRole="urunStokDurum" />
+        </EntityType>
+        <EntityType Name="urunStokDurum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="stokMiktar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_urunStokDurum_urun1" FromRole="urunStokDurum" ToRole="urun" />
+        </EntityType>
+        <EntityType Name="musteriBorc">
+          <Key>
+            <PropertyRef Name="musteriID" />
+          </Key>
+          <Property Name="musteriID" Type="Int32" Nullable="false" />
+          <Property Name="borcMiktari" Type="Int32" />
+          <NavigationProperty Name="musteri" Relationship="Self.FK_musteriBorc_musteri" FromRole="musteriBorc" ToRole="musteri" />
+        </EntityType>
+        <EntityType Name="pesinSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+            <PropertyRef Name="satisTarih" />
+            <PropertyRef Name="satisMiktar" />
+          </Key>
+          <Property Name="satisID" Type="Int32" Nullable="false" />
+          <Property Name="satisTarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="satisMiktar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="perakendeSatis" Relationship="Self.FK_pesinSatis_perakendeSatis" FromRole="pesinSatis" ToRole="perakendeSatis" />
+        </EntityType>
+        <EntityType Name="tedarikciBorc">
+          <Key>
+            <PropertyRef Name="tedarikciID" />
+            <PropertyRef Name="borcMiktar" />
+          </Key>
+          <Property Name="tedarikciID" Type="Int32" Nullable="false" />
+          <Property Name="borcMiktar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tedarikci" Relationship="Self.FK_tedarikciBorc_tedarikci" FromRole="tedarikciBorc" ToRole="tedarikci" />
+        </EntityType>
+        <EntityType Name="tedarikciOdeme">
+          <Key>
+            <PropertyRef Name="tedarikciID" />
+            <PropertyRef Name="odemeMiktar" />
+            <PropertyRef Name="odemeTarih" />
+          </Key>
+          <Property Name="tedarikciID" Type="Int32" Nullable="false" />
+          <Property Name="odemeMiktar" Type="Int32" Nullable="false" />
+          <Property Name="odemeTarih" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="tedarikci" Relationship="Self.FK_tedarikciOdeme_tedarikci" FromRole="tedarikciOdeme" ToRole="tedarikci" />
+        </EntityType>
+        <EntityType Name="veresiye">
+          <Key>
+            <PropertyRef Name="satisID" />
+            <PropertyRef Name="satisTarih" />
+            <PropertyRef Name="satisMiktar" />
+          </Key>
+          <Property Name="satisID" Type="Int32" Nullable="false" />
+          <Property Name="satisTarih" Type="Int32" Nullable="false" />
+          <Property Name="satisMiktar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="musteri" Relationship="Self.FK_veresiye_musteri" FromRole="veresiye" ToRole="musteri" />
+          <NavigationProperty Name="perakendeSatis" Relationship="Self.FK_veresiteSatis_perakendeSatis" FromRole="veresiye" ToRole="perakendeSatis" />
+        </EntityType>
+        <Association Name="FK_irsaliye_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="irsaliye" Type="Self.irsaliye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="irsaliye">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_irsaliye_urun">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="irsaliye" Type="Self.irsaliye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="irsaliye">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_perakendeSatis">
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perakendeSatis">
+              <PropertyRef Name="satisID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="satisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_market_urun">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="market" Type="Self.market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="market">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_musteriBorc_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="musteriBorc" Type="Self.musteriBorc" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="musteriBorc">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_musteriOdeme_musteri1">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="musteriOdeme" Type="Self.musteriOdeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="musteriOdeme">
+              <PropertyRef Name="musteriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veresiye_musteri">
+          <End Role="musteri" Type="Self.musteri" Multiplicity="1" />
+          <End Role="veresiye" Type="Self.veresiye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="musteri">
+              <PropertyRef Name="musteriID" />
+            </Principal>
+            <Dependent Role="veresiye">
+              <PropertyRef Name="satisTarih" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_perakendeSatis_urun">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="perakendeSatis">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesinSatis_perakendeSatis">
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="1" />
+          <End Role="pesinSatis" Type="Self.pesinSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perakendeSatis">
+              <PropertyRef Name="satisID" />
+            </Principal>
+            <Dependent Role="pesinSatis">
+              <PropertyRef Name="satisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veresiteSatis_perakendeSatis">
+          <End Role="perakendeSatis" Type="Self.perakendeSatis" Multiplicity="1" />
+          <End Role="veresiye" Type="Self.veresiye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="perakendeSatis">
+              <PropertyRef Name="satisID" />
+            </Principal>
+            <Dependent Role="veresiye">
+              <PropertyRef Name="satisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tedarikciBorc_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="tedarikciBorc" Type="Self.tedarikciBorc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="tedarikciBorc">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tedarikciOdeme_tedarikci">
+          <End Role="tedarikci" Type="Self.tedarikci" Multiplicity="1" />
+          <End Role="tedarikciOdeme" Type="Self.tedarikciOdeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tedarikci">
+              <PropertyRef Name="tedarikciID" />
+            </Principal>
+            <Dependent Role="tedarikciOdeme">
+              <PropertyRef Name="tedarikciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunStokDurum_urun1">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="urunStokDurum" Type="Self.urunStokDurum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunID" />
+            </Principal>
+            <Dependent Role="urunStokDurum">
+              <PropertyRef Name="urunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="omuGrossDataBaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="irsaliye" EntityType="Self.irsaliye" />
+          <EntitySet Name="market" EntityType="Self.market" />
+          <EntitySet Name="musteri" EntityType="Self.musteri" />
+          <EntitySet Name="musteriOdeme" EntityType="Self.musteriOdeme" />
+          <EntitySet Name="perakendeSatis" EntityType="Self.perakendeSatis" />
+          <EntitySet Name="tedarikci" EntityType="Self.tedarikci" />
+          <EntitySet Name="urun" EntityType="Self.urun" />
+          <EntitySet Name="urunStokDurum" EntityType="Self.urunStokDurum" />
+          <EntitySet Name="musteriBorc" EntityType="Self.musteriBorc" />
+          <EntitySet Name="pesinSatis" EntityType="Self.pesinSatis" />
+          <EntitySet Name="tedarikciBorc" EntityType="Self.tedarikciBorc" />
+          <EntitySet Name="tedarikciOdeme" EntityType="Self.tedarikciOdeme" />
+          <EntitySet Name="veresiye" EntityType="Self.veresiye" />
+          <AssociationSet Name="FK_irsaliye_tedarikci" Association="Self.FK_irsaliye_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="irsaliye" EntitySet="irsaliye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_irsaliye_urun" Association="Self.FK_irsaliye_urun">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="irsaliye" EntitySet="irsaliye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_musteri" Association="Self.FK_market_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_perakendeSatis" Association="Self.FK_market_perakendeSatis">
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_tedarikci" Association="Self.FK_market_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_market_urun" Association="Self.FK_market_urun">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="market" EntitySet="market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_musteriBorc_musteri" Association="Self.FK_musteriBorc_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="musteriBorc" EntitySet="musteriBorc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_musteriOdeme_musteri1" Association="Self.FK_musteriOdeme_musteri1">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="musteriOdeme" EntitySet="musteriOdeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veresiye_musteri" Association="Self.FK_veresiye_musteri">
+            <End Role="musteri" EntitySet="musteri" />
+            <End Role="veresiye" EntitySet="veresiye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_perakendeSatis_urun" Association="Self.FK_perakendeSatis_urun">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesinSatis_perakendeSatis" Association="Self.FK_pesinSatis_perakendeSatis">
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+            <End Role="pesinSatis" EntitySet="pesinSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veresiteSatis_perakendeSatis" Association="Self.FK_veresiteSatis_perakendeSatis">
+            <End Role="perakendeSatis" EntitySet="perakendeSatis" />
+            <End Role="veresiye" EntitySet="veresiye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tedarikciBorc_tedarikci" Association="Self.FK_tedarikciBorc_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="tedarikciBorc" EntitySet="tedarikciBorc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tedarikciOdeme_tedarikci" Association="Self.FK_tedarikciOdeme_tedarikci">
+            <End Role="tedarikci" EntitySet="tedarikci" />
+            <End Role="tedarikciOdeme" EntitySet="tedarikciOdeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunStokDurum_urun1" Association="Self.FK_urunStokDurum_urun1">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="urunStokDurum" EntitySet="urunStokDurum" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="omuGrossDataBaseModel.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="omuGrossDataBaseModelStoreContainer" CdmEntityContainer="omuGrossDataBaseEntities1">
+          <EntitySetMapping Name="irsaliye">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.irsaliye">
+              <MappingFragment StoreEntitySet="irsaliye">
+                <ScalarProperty Name="irsaliyeNo" ColumnName="irsaliyeNo" />
+                <ScalarProperty Name="urunGirdiMiktari" ColumnName="urunGirdiMiktari" />
+                <ScalarProperty Name="urunFiyati" ColumnName="urunFiyati" />
+                <ScalarProperty Name="tedarikciID" ColumnName="tedarikciID" />
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="barkodNo" ColumnName="barkodNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="market">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.market">
+              <MappingFragment StoreEntitySet="market">
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+                <ScalarProperty Name="tedarikciID" ColumnName="tedarikciID" />
+                <ScalarProperty Name="satisID" ColumnName="satisID" />
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="marketID" ColumnName="marketID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="musteri">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.musteri">
+              <MappingFragment StoreEntitySet="musteri">
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="musteriOdeme">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.musteriOdeme">
+              <MappingFragment StoreEntitySet="musteriOdeme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="odemeMiktari" ColumnName="odemeMiktari" />
+                <ScalarProperty Name="odemeTarihi" ColumnName="odemeTarihi" />
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="perakendeSatis">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.perakendeSatis">
+              <MappingFragment StoreEntitySet="perakendeSatis">
+                <ScalarProperty Name="satisID" ColumnName="satisID" />
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="satisTarih" ColumnName="satisTarih" />
+                <ScalarProperty Name="satisMiktar" ColumnName="satisMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tedarikci">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.tedarikci">
+              <MappingFragment StoreEntitySet="tedarikci">
+                <ScalarProperty Name="tedarikciID" ColumnName="tedarikciID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urun">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.urun">
+              <MappingFragment StoreEntitySet="urun">
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="urunAd" ColumnName="urunAd" />
+                <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+                <ScalarProperty Name="barkodNo" ColumnName="barkodNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunStokDurum">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.urunStokDurum">
+              <MappingFragment StoreEntitySet="urunStokDurum">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="stokMiktar" ColumnName="stokMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="musteriBorc">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.musteriBorc">
+              <MappingFragment StoreEntitySet="musteriBorc">
+                <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+                <ScalarProperty Name="borcMiktari" ColumnName="borcMiktari" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pesinSatis">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.pesinSatis">
+              <MappingFragment StoreEntitySet="pesinSatis">
+                <ScalarProperty Name="satisID" ColumnName="satisID" />
+                <ScalarProperty Name="satisTarih" ColumnName="satisTarih" />
+                <ScalarProperty Name="satisMiktar" ColumnName="satisMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tedarikciBorc">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.tedarikciBorc">
+              <MappingFragment StoreEntitySet="tedarikciBorc">
+                <ScalarProperty Name="tedarikciID" ColumnName="tedarikciID" />
+                <ScalarProperty Name="borcMiktar" ColumnName="borcMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tedarikciOdeme">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.tedarikciOdeme">
+              <MappingFragment StoreEntitySet="tedarikciOdeme">
+                <ScalarProperty Name="tedarikciID" ColumnName="tedarikciID" />
+                <ScalarProperty Name="odemeMiktar" ColumnName="odemeMiktar" />
+                <ScalarProperty Name="odemeTarih" ColumnName="odemeTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="veresiye">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.veresiye">
+              <MappingFragment StoreEntitySet="veresiye">
+                <ScalarProperty Name="satisID" ColumnName="satisID" />
+                <ScalarProperty Name="satisTarih" ColumnName="satisTarih" />
+                <ScalarProperty Name="satisMiktar" ColumnName="satisMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="omuGrossDataBaseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
