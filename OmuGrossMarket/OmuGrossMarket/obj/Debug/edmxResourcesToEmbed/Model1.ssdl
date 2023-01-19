@@ -69,16 +69,6 @@ warning 6002: The table/view 'omuGrossDataBase.dbo.pesinSatis' does not have a p
     <Property Name="satisTarih" Type="smalldatetime" Nullable="false" />
     <Property Name="satisMiktar" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="tedarikci">
     <Key>
       <PropertyRef Name="tedarikciID" />
@@ -323,7 +313,6 @@ warning 6002: The table/view 'omuGrossDataBase.dbo.veresiye' does not have a pri
     <EntitySet Name="musteri" EntityType="Self.musteri" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="musteriOdeme" EntityType="Self.musteriOdeme" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="perakendeSatis" EntityType="Self.perakendeSatis" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tedarikci" EntityType="Self.tedarikci" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="urunStokDurum" EntityType="Self.urunStokDurum" Schema="dbo" store:Type="Tables" />
