@@ -32,7 +32,6 @@
             this.Btn_AddCustomer = new System.Windows.Forms.Button();
             this.Btn_DeleteCustomer = new System.Windows.Forms.Button();
             this.Btn_ListCustomer = new System.Windows.Forms.Button();
-            this.Btn_UpdateCustomer = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Btn_ListProduct = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@
             this.Btn_DeleteProduct = new System.Windows.Forms.Button();
             this.Btn_AddProduct = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Btn_AddSupplier = new System.Windows.Forms.Button();
             this.Btn_ListSuplier = new System.Windows.Forms.Button();
             this.Btn_UpdateSuplier = new System.Windows.Forms.Button();
             this.Btn_DeleteSuplier = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textID = new System.Windows.Forms.TextBox();
             this.textName = new System.Windows.Forms.TextBox();
             this.textSurname = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.textPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Btn_AddSupplier = new System.Windows.Forms.Button();
+            this.Btn_UpdateCustomer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,6 +89,7 @@
             this.Btn_DeleteCustomer.TabIndex = 2;
             this.Btn_DeleteCustomer.Text = "Delete";
             this.Btn_DeleteCustomer.UseVisualStyleBackColor = true;
+            this.Btn_DeleteCustomer.Click += new System.EventHandler(this.Btn_DeleteCustomer_Click);
             // 
             // Btn_ListCustomer
             // 
@@ -100,20 +101,10 @@
             this.Btn_ListCustomer.UseVisualStyleBackColor = true;
             this.Btn_ListCustomer.Click += new System.EventHandler(this.Btn_ListCustomer_Click);
             // 
-            // Btn_UpdateCustomer
-            // 
-            this.Btn_UpdateCustomer.Location = new System.Drawing.Point(29, 119);
-            this.Btn_UpdateCustomer.Name = "Btn_UpdateCustomer";
-            this.Btn_UpdateCustomer.Size = new System.Drawing.Size(133, 36);
-            this.Btn_UpdateCustomer.TabIndex = 3;
-            this.Btn_UpdateCustomer.Text = "Update";
-            this.Btn_UpdateCustomer.UseVisualStyleBackColor = true;
-            this.Btn_UpdateCustomer.Click += new System.EventHandler(this.button4_Click);
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Btn_ListCustomer);
             this.groupBox1.Controls.Add(this.Btn_UpdateCustomer);
+            this.groupBox1.Controls.Add(this.Btn_ListCustomer);
             this.groupBox1.Controls.Add(this.Btn_DeleteCustomer);
             this.groupBox1.Controls.Add(this.Btn_AddCustomer);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -157,6 +148,7 @@
             this.Btn_UpdateProduct.TabIndex = 7;
             this.Btn_UpdateProduct.Text = "Update";
             this.Btn_UpdateProduct.UseVisualStyleBackColor = true;
+            this.Btn_UpdateProduct.Click += new System.EventHandler(this.Btn_UpdateProduct_Click);
             // 
             // Btn_DeleteProduct
             // 
@@ -166,6 +158,7 @@
             this.Btn_DeleteProduct.TabIndex = 6;
             this.Btn_DeleteProduct.Text = "Delete";
             this.Btn_DeleteProduct.UseVisualStyleBackColor = true;
+            this.Btn_DeleteProduct.Click += new System.EventHandler(this.Btn_DeleteProduct_Click);
             // 
             // Btn_AddProduct
             // 
@@ -192,6 +185,16 @@
             this.groupBox3.Text = "Suplier";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // Btn_AddSupplier
+            // 
+            this.Btn_AddSupplier.Location = new System.Drawing.Point(29, 19);
+            this.Btn_AddSupplier.Name = "Btn_AddSupplier";
+            this.Btn_AddSupplier.Size = new System.Drawing.Size(133, 36);
+            this.Btn_AddSupplier.TabIndex = 26;
+            this.Btn_AddSupplier.Text = "Add";
+            this.Btn_AddSupplier.UseVisualStyleBackColor = true;
+            this.Btn_AddSupplier.Click += new System.EventHandler(this.Btn_AddSupplier_Click_1);
+            // 
             // Btn_ListSuplier
             // 
             this.Btn_ListSuplier.Location = new System.Drawing.Point(29, 169);
@@ -210,6 +213,7 @@
             this.Btn_UpdateSuplier.TabIndex = 7;
             this.Btn_UpdateSuplier.Text = "Update";
             this.Btn_UpdateSuplier.UseVisualStyleBackColor = true;
+            this.Btn_UpdateSuplier.Click += new System.EventHandler(this.Btn_UpdateSuplier_Click);
             // 
             // Btn_DeleteSuplier
             // 
@@ -219,6 +223,7 @@
             this.Btn_DeleteSuplier.TabIndex = 6;
             this.Btn_DeleteSuplier.Text = "Delete";
             this.Btn_DeleteSuplier.UseVisualStyleBackColor = true;
+            this.Btn_DeleteSuplier.Click += new System.EventHandler(this.Btn_DeleteSuplier_Click);
             // 
             // label1
             // 
@@ -273,12 +278,12 @@
             this.label4.Text = "Surname:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox1
+            // textID
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 16;
+            this.textID.Location = new System.Drawing.Point(130, 14);
+            this.textID.Name = "textID";
+            this.textID.Size = new System.Drawing.Size(100, 20);
+            this.textID.TabIndex = 16;
             // 
             // textName
             // 
@@ -342,15 +347,15 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "label:";
             // 
-            // Btn_AddSupplier
+            // Btn_UpdateCustomer
             // 
-            this.Btn_AddSupplier.Location = new System.Drawing.Point(29, 19);
-            this.Btn_AddSupplier.Name = "Btn_AddSupplier";
-            this.Btn_AddSupplier.Size = new System.Drawing.Size(133, 36);
-            this.Btn_AddSupplier.TabIndex = 26;
-            this.Btn_AddSupplier.Text = "Add";
-            this.Btn_AddSupplier.UseVisualStyleBackColor = true;
-            this.Btn_AddSupplier.Click += new System.EventHandler(this.Btn_AddSupplier_Click_1);
+            this.Btn_UpdateCustomer.Location = new System.Drawing.Point(29, 119);
+            this.Btn_UpdateCustomer.Name = "Btn_UpdateCustomer";
+            this.Btn_UpdateCustomer.Size = new System.Drawing.Size(133, 36);
+            this.Btn_UpdateCustomer.TabIndex = 25;
+            this.Btn_UpdateCustomer.Text = "Update";
+            this.Btn_UpdateCustomer.UseVisualStyleBackColor = true;
+            this.Btn_UpdateCustomer.Click += new System.EventHandler(this.Btn_UpdateCustomer_Click);
             // 
             // Form1
             // 
@@ -365,7 +370,7 @@
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textSurname);
             this.Controls.Add(this.textName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textID);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -393,7 +398,6 @@
         private System.Windows.Forms.Button Btn_AddCustomer;
         private System.Windows.Forms.Button Btn_DeleteCustomer;
         private System.Windows.Forms.Button Btn_ListCustomer;
-        private System.Windows.Forms.Button Btn_UpdateCustomer;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -408,7 +412,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textID;
         private System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.TextBox textSurname;
         private System.Windows.Forms.TextBox textBox4;
@@ -417,6 +421,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button Btn_AddSupplier;
+        private System.Windows.Forms.Button Btn_UpdateCustomer;
     }
 }
 
