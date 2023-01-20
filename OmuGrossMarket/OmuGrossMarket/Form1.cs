@@ -205,7 +205,7 @@ namespace OmuGrossMarket
 
         private void btn_Satış_Yap_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
+            Form3 form = new Form3();
             
             form.ShowDialog();
             
