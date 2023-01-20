@@ -126,17 +126,35 @@ namespace OmuGrossMarket
                 musteriOdeme pay = new musteriOdeme();
                 musteriBorc debt= new musteriBorc();
                 pay.musteri = customer;
-                pay.musteriID = customer.musteriID;
-                pay.odemeMiktari = Convert.ToInt32(textAmount);
+                pay.odemeMiktari = Convert.ToInt32(textAmount.Text);
                 pay.odemeTarihi = DateTime.Now;
                 debt.musteri = customer;
-                debt.musteriID = customer.musteriID;
-                debt.borcMiktari = debt.borcMiktari - Convert.ToInt32(textAmount);
+                debt.borcMiktari = debt.borcMiktari - Convert.ToInt32(textAmount.Text);
                 db.musteriBorc.Add(debt);
                 db.musteriOdeme.Add(pay);
-                dataGridView1.DataSource = db.musteriOdeme.ToList();
                 db.SaveChanges();
+                dataGridView1.DataSource = db.musteriOdeme.ToList();
+               
             }
+        }
+
+        List<urun> products = new List<urun>();
+        private void Btn_AddToBox_Click(object sender, EventArgs e)
+        {
+            int Id = Convert.ToInt32(textProductID.Text);
+            var product = db.urun.Find(Id);
+            products.Add(product);
+            dataGridView1.DataSource= products.ToList();
+        }
+
+        private void Btn_RemoveFromBox_Click(object sender, EventArgs e)
+        {
+            Form4 form = new Form4();
+            form.ShowDialog();
+            int Id = Convert.ToInt32(textProductID.Text);
+            var product = db.urun.Find(Id);
+            products.Remove(product);
+            dataGridView1.DataSource= products.ToList();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace OmuGrossMarket
     public partial class musteriBorc
     {
         public int musteriID { get; set; }
-        public Nullable<int> borcMiktari { get; set; }
+        public int borcMiktari { get; set; }
     
         public virtual musteri musteri { get; set; }
     }

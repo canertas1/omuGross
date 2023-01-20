@@ -49,3 +49,4 @@ C:\Users\caner\Desktop\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGross
 C:\Users\caner\Desktop\omuGross\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.Form2.resources
 C:\Users\90534\source\repos\omuGrossMarket\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.Form2.resources
 C:\Users\90534\source\repos\omuGrossMarket\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.Form3.resources
+C:\Users\90534\source\repos\omuGrossMarket\OmuGrossMarket\OmuGrossMarket\obj\Debug\OmuGrossMarket.Form4.resources

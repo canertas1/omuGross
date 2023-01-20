@@ -136,6 +136,7 @@
             this.Btn_RemoveFromBox.TabIndex = 27;
             this.Btn_RemoveFromBox.Text = "Sepetten Çıkar";
             this.Btn_RemoveFromBox.UseVisualStyleBackColor = true;
+            this.Btn_RemoveFromBox.Click += new System.EventHandler(this.Btn_RemoveFromBox_Click);
             // 
             // Btn_AddToBox
             // 
@@ -146,6 +147,7 @@
             this.Btn_AddToBox.TabIndex = 26;
             this.Btn_AddToBox.Text = "Sepete Ekle";
             this.Btn_AddToBox.UseVisualStyleBackColor = true;
+            this.Btn_AddToBox.Click += new System.EventHandler(this.Btn_AddToBox_Click);
             // 
             // Btn_CostumerGetPayment
             // 

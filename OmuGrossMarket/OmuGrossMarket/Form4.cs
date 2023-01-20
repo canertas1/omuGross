@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace OmuGrossMarket
 {
-    public partial class Form3 : Form
+    public partial class Form4 : Form
     {
-        public Form3()
+        public static Form4 instance;
+        public Form4()
         {
             InitializeComponent();
+            instance= this;
         }
 
         private void textUserName_TextChanged(object sender, EventArgs e)
@@ -29,10 +31,9 @@ namespace OmuGrossMarket
 
         private void Btn_Enter_Click(object sender, EventArgs e)
         {
-            if((textUserName.Text == "admin") && (textPassword.Text == "1234"))
+            if ((textUserName.Text == "admin") && (textPassword.Text == "1234"))
             {
-                Form2 form = new Form2();
-                form.ShowDialog();
+                instance.Close();
             }
             else
             {
