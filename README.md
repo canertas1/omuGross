@@ -4,7 +4,7 @@ Market Automation
 Market database automation with team work
 
 Prerequisites
-Application From Market with c # and Entity Framework Code First approach using Visual Studio IDE
+Application From Market with c # and Entity Framework Database First approach using Visual Studio IDE
 
 Built With
 C# - Entity Framework - DataBase first
