@@ -19,8 +19,13 @@ namespace OmuGrossMarket
             InitializeComponent();
             instance= this;
         }
+        omuGrossDataBaseEntities1 db = new omuGrossDataBaseEntities1 ();
 
         private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void textPrice_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -53,6 +58,85 @@ namespace OmuGrossMarket
         private void label1_Click_3(object sender, EventArgs e)
         {
 
+        }
+
+        private void Btn_AddToDepot_Click(object sender, EventArgs e)
+        {
+            if (textSuppID.Text == "" || textAmount.Text == "" || textPrice.Text == "" || textProductID.Text == "")
+            {
+                dataGridView1.DataSource = db.irsaliye.ToList();
+                dataGridView1.Columns[6].Visible = false;
+                dataGridView1.Columns[7].Visible = false;
+            }
+            else {
+                int Id = Convert.ToInt32(textProductID.Text);
+                var product = db.urun.Find(Id);
+                int Id2 = Convert.ToInt32(textSuppID.Text);
+                var supplier = db.tedarikci.Find(Id2);
+                irsaliye bill = new irsaliye();
+                bill.tedarikciID = supplier.tedarikciID;
+                bill.tedarikci = supplier;
+                bill.urunGirdiMiktari = Convert.ToInt32(textAmount.Text);
+                bill.urun = product;
+                bill.urunFiyati = Convert.ToInt32(textPrice.Text);
+                bill.urunID = product.urunID;
+                bill.barkodNo = product.barkodNo;
+                db.irsaliye.Add(bill);
+                db.SaveChanges();
+                var sorgu = from d1 in db.irsaliye
+                            join d2 in db.tedarikci
+                            on d1.tedarikciID equals d2.tedarikciID
+                            join d3 in db.urun
+                            on d1.urunID equals d3.urunID
+                            select new
+                            {
+                                irsaliyeNo = d1.irsaliyeNo,
+                                ürüngirdimiktarı = d1.urunGirdiMiktari,
+                                ürünfiyatı = d1.urunFiyati,
+                                tedarikciID = d2.ad,
+                                urunID = d3.urunAd
+                            };
+
+                dataGridView1.DataSource = sorgu.ToList();
+                //dataGridView1.Columns[6].Visible = false;
+                //dataGridView1.Columns[7].Visible = false;
+                db.SaveChanges();
+            }
+            
+        }
+
+        private void Btn_ProductList_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.urun.ToList();
+            dataGridView1.Columns[4].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+
+        }
+
+        private void Btn_CostumerGetPayment_Click(object sender, EventArgs e)
+        {
+            if(textAmount.Text == "" || textCustomerID.Text == "")
+            {
+                dataGridView1.DataSource = db.musteriBorc.ToList();
+            }
+            else {
+                int id = Convert.ToInt32(textCustomerID.Text);
+                var customer = db.musteri.Find(id);
+                musteriOdeme pay = new musteriOdeme();
+                musteriBorc debt= new musteriBorc();
+                pay.musteri = customer;
+                pay.musteriID = customer.musteriID;
+                pay.odemeMiktari = Convert.ToInt32(textAmount);
+                pay.odemeTarihi = DateTime.Now;
+                debt.musteri = customer;
+                debt.musteriID = customer.musteriID;
+                debt.borcMiktari = debt.borcMiktari - Convert.ToInt32(textAmount);
+                db.musteriBorc.Add(debt);
+                db.musteriOdeme.Add(pay);
+                dataGridView1.DataSource = db.musteriOdeme.ToList();
+                db.SaveChanges();
+            }
         }
     }
 }
