@@ -10,9 +10,13 @@ Built With
 C# - Entity Framework - DataBase first
 
 Contributors:
+
 Caner Taş : https://github.com/canertas1
+
 Bilal Metahan Karabulut : https://github.com/MetehanKarabulut
+
 Yunus Emre Erkesikbaş : https://github.com/yunusemreerkesikbas
+
 Pınar Yıldırım : https://github.com/yildirimpinar
 
 
