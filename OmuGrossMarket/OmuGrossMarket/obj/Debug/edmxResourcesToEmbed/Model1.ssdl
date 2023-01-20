@@ -36,7 +36,7 @@ warning 6002: The table/view 'omuGrossDataBase.dbo.musteriBorc' does not have a 
     <Key>
       <PropertyRef Name="musteriID" />
     </Key>
-    <Property Name="musteriID" Type="int" Nullable="false" />
+    <Property Name="musteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="borcMiktari" Type="int" />
   </EntityType>
   <EntityType Name="musteriOdeme">
