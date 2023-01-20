@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\OmuGrossMarket",
+    "\\OmuGrossMarket\\OmuGrossMarket",
+    "\\OmuGrossMarket\\OmuGrossMarket\\bin",
+    "\\OmuGrossMarket\\OmuGrossMarket\\bin\\Debug",
+    "\\OmuGrossMarket\\OmuGrossMarket\\bin\\Release"
   ],
+  "SelectedNode": "\\OmuGrossMarket\\OmuGrossMarket\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

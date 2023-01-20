@@ -52,6 +52,13 @@ namespace OmuGrossMarket
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (e.RowIndex >= 0) {
+
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                
+            
+            }
+
         }
 
         private void label5_Click(object sender, EventArgs e)
